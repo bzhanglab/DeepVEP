@@ -69,7 +69,7 @@ python deepmp.py predict -h
   -m or --model           Trained model path
   -t or --task            Prediction type: 1=Mutation impact prediction, 2=PTM site prediction
   -e or --ensemble        Ensemble method, 1: average, 2: meta_lr, default is 1.
-  -s, --explain_model     Perform model interpretability analysis
+  -s or --explain_model   Perform model interpretability analysis
   -b or --bg_data         Data used as background data in model interpretability
 ```
 
@@ -85,8 +85,8 @@ python deepmp.py predict -m models/ -i mutation_file.tsv -d protein.fasta -t 1 -
 The required columns for input of ``-i`` include **Protein**, **AA_Ref**, **AA_Pos** and **AA_Var**. An example is shown below:
 
 ```
-Protein	AA_Ref	AA_Pos	AA_Var
-P23246	I	    337	    A
+Protein AA_Ref  AA_Pos  AA_Var
+P23246  I       337     A
 ```
 
 For the above example input (``-i``), the wild type protein sequence of protein **P23246** should be present in the input protein database for ``-d``:
