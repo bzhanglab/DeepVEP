@@ -174,7 +174,6 @@ def main():
 
             # PTM prediction
             elif prediction_type == 2:
-                print("ok1")
                 if model_file is None:
                     model_dir = os.path.join(os.path.abspath(os.path.dirname(sys.argv[0])), "models")
                     if os.path.isdir(model_dir):
@@ -186,7 +185,6 @@ def main():
                         print("Model folder doesn't exist: %s" % (model_dir))
                         sys.exit(1)
                 else:
-                    print("ok")
                     if os.path.isdir(model_file):
                         ptm_prediction_for_multiple_ptms(model_dir=model_file, test_file=input_file, db=db,
                                                          out_dir=out_dir, prefix="site_prediction",
