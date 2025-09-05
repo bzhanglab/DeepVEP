@@ -218,7 +218,7 @@ Below please find the description of each column in the output file "output_fold
 
 The prediction took less than 3 minutes using CPU on a Linux server (64G RAM and 16 CPUs).
 
-## Protein Consequences
+#### Protein Consequences
 
 Often, variants would be otained as changes in coding sequences. These would
 need to be translated to the corresponding change in protein sequence. 
