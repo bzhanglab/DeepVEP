@@ -3,6 +3,7 @@ from lib.DataIO import variant_annotation_vcf, filter_db, getTrainDataFromFasta,
 from lib.MutationUtils import mutation_impact_prediction, mutation_impact_prediction_for_multiple_ptms
 from lib.PTModels import ensemble_models, ptm_prediction_for_multiple_ptms, ptm_predict
 import argparse
+import tensorflow as tf
 import sys
 import os
 
@@ -88,7 +89,8 @@ def main():
                             add_tb_callback=add_tb_callback,gpu=n_gpu,n_patience=n_patience,lr=learning_rate,seq_encode_method=sequence_encode_method)
 
         elif mode == "predict":
-
+            import logging
+            logging.getLogger('tensorflow').setLevel(logging.ERROR)
             print("Run prediction!")
             parser = argparse.ArgumentParser(
                 description='DeepMVP')

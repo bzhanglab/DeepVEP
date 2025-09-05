@@ -1,0 +1,5 @@
+
+*.pyc
+models/*
+mutation_output_folder/*
+output_folder/*
