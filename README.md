@@ -24,10 +24,16 @@ $ git clone https://github.com/bzhanglab/DeepMVP
 
 #### Installation
 
-DeepMVP is a python3 package. TensorFlow (>=2.6) is supported. Its dependencies can be installed via
+DeepMVP is a python3 package. TensorFlow (2.4.*) is supported. Its dependencies can be installed via
 
 ```shell
 $ pip install -r requirements.txt
+```
+
+or 
+
+```shell
+$ mamba env create -f environment.yml
 ```
 DeepMVP has been tested on both Linux and Windows systems. It supports training and prediction on both CPU and GPU.
 
