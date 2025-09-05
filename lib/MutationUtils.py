@@ -127,7 +127,8 @@ def mutation_impact_prediction(model_file=None, input_file=None, db=None, window
         ## Relative log fold changes of odds
         m_data['log_ratio'] = m_data.apply(calc_log_fold_changes_of_odds, axis=1)
 
-        m_data = calc_evalue(m_data,model_dir=os.path.dirname(model_file))
+        if add_model_explain:
+          m_data = calc_evalue(m_data,model_dir=os.path.dirname(model_file))
 
         out_file = out_dir + "/" + str(prefix) + "-mutation_impact.tsv"
 

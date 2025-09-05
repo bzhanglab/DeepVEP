@@ -2,6 +2,7 @@ from lib.DataIO import variant_annotation_vcf, filter_db, getTrainDataFromFasta,
     get_type_of_input_ptm_site_db, getTrainDataFromTable
 from lib.MutationUtils import mutation_impact_prediction, mutation_impact_prediction_for_multiple_ptms
 from lib.PTModels import ensemble_models, ptm_prediction_for_multiple_ptms, ptm_predict
+from lib.QueryProtVar import query_protvar_api, encodeAAByLETTER
 import argparse
 import tensorflow as tf
 import sys
@@ -87,6 +88,27 @@ def main():
                             ga_file=ga, out_dir=out_dir, early_stop_patience=early_stop_patience,models_file=model_file,
                             add_ReduceLROnPlateau=add_ReduceLROnPlateau, add_eval_callback=add_eval_callback,
                             add_tb_callback=add_tb_callback,gpu=n_gpu,n_patience=n_patience,lr=learning_rate,seq_encode_method=sequence_encode_method)
+
+        elif mode == "translate":
+
+            print("Translating genomic to protein consequence!")
+            parser = argparse.ArgumentParser(
+                description='Tranlate genomic to protein consequences')
+            parser.add_argument('-i', '--input', default=None, type=str, required=True,
+                                help="Input VCF formate file to translate")
+            parser.add_argument('-o', '--output', default=None, type=str,
+                                help="Output TSV file.")
+            parser.add_argument('-a', '--assembly', default="AUTO", type=str,
+                                help="Genome assembly of the input VCF file")
+
+            args = parser.parse_args(sys.argv[2:len(sys.argv)])
+
+            input_file  = args.input
+            output_file = args.output
+            assembly    = args.assembly
+
+            query_protvar_api(vcf_file_path=input_file, output_file_path=output_file,
+                              assembly=assembly)
 
         elif mode == "predict":
             import logging
