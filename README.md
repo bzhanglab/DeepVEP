@@ -63,7 +63,7 @@ The pretrained model files are available at [DeepMVP model repository](http://De
 
 Run the following command line to show all command line options:
 ```
-python deepmp.py predict -h
+python DeepMVP.py predict -h
 ```
 
 ```
